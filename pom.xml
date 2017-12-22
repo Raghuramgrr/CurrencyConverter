@@ -54,7 +54,7 @@
                     <artifactId>maven-war-plugin</artifactId>
                     <version>2.4</version>
                     <configuration>
-                        <warSourceDirectory> iss/target</warSourceDirectory>
+                        <warSourceDirectory> currencyConverter/target</warSourceDirectory>
                         <warName>converter</warName>
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                     </configuration>
@@ -64,5 +64,5 @@
    
         <finalName>converter</finalName>
     </build>
-    <artifactId>iss</artifactId>
+    <artifactId>currencyConverter</artifactId>
 </project>
