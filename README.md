@@ -70,7 +70,7 @@ Create EC2 instance to your deployment setup in 2 mins
     12)  sudo service mysqld stop
     
    ## Author
-   Raghuram Gnanasekaran     [Mywebsite](htttp://www.raghuramg.com)
+   Raghuram Gnanasekaran   - Click to Navigate to my webiste [Mywebsite](htttp://www.raghuramg.com)
    
    ## Acknowledgements 
    Stackoverflow, 
