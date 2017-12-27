@@ -21,13 +21,14 @@ public class parseDAOImpl implements parseDAO {
 	}
 
 	/**
-	 * DAO  Impl Hits the DB and Inserts data into  db.
+	 * DAO Impl Hits the DB and Inserts data into db.
 	 *
 	 * Sample - http://ec2-**-**-98-69.compute-1.amazonaws.com:8080/converter/parse
-	 * Inserts all data into schema 
-	 * Supports only 8 currencies 
-	 *  Converts all data into Lowercase and Inserts - Easy for retrieval 
-	 * @throws ParseException If Dump is in invalid Format.
+	 * Inserts all data into schema Supports only 8 currencies Converts all data
+	 * into Lowercase and Inserts - Easy for retrieval
+	 * 
+	 * @throws ParseException
+	 *             If Dump is in invalid Format.
 	 * 
 	 */
 	@Override
