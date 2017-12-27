@@ -17,13 +17,26 @@ import com.iss.DAO.currencyDAO;
 import com.iss.model.currencyModel;
 
 @RestController
-public class dateController { 
+public class dateController {
 	dateCheckerController dateChecker = new dateCheckerController();
 	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	ApplicationContext context = new ClassPathXmlApplicationContext("database//DBModule.xml");
 	currencyDAO cDAO = (currencyDAO) context.getBean("currencyDAO");
 	String totaldateString;
 
+	/**
+	 * REST controller can take Date as input and gives exchange rate and currencies
+	 * as output.
+	 *
+	 * Sample -
+	 * http://ec2-**-**-98-69.compute-1.amazonaws.com:8080/converter/date?text=2017-01-01
+	 * Returns all the Exchange rates on the specified Date Supports only 8
+	 * currencies Try invalid Dates
+	 * 
+	 * 
+	 * Try -Invalid Dates Error will be returned .
+	 * 
+	 */
 	@RequestMapping("/date")
 	public String getRatesByDate(@RequestParam("text") String param_date) {
 		totaldateString = "";
@@ -57,7 +70,7 @@ public class dateController {
 
 	public void addData(String sourceCurrency, String conversionRate, String targetCurrency) {
 		totaldateString += sourceCurrency + "\t was \t " + conversionRate + "\t times \t" + targetCurrency + "\n";
-		
-	}
 
 	}
+
+}

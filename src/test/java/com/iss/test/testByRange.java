@@ -32,6 +32,8 @@ public class testByRange {
 			e.printStackTrace();
 		}
 	}
+	
+	
 	@Test 
 	public void testSameDates() {
 		try {
@@ -47,6 +49,16 @@ public class testByRange {
 		}
 
 	}
+	
+	/**
+	 * Tester hits and DB Retrieves the data from db. Verifies the length of the Result
+	 *
+	 * Sample - http://ec2-**-**-98-69.compute-1.amazonaws.com:8080/converter/date?text=2017-01-01 
+	 *
+	 * Returns a Int Value and we know for every valid date we have 7 tuples 
+	 *
+	 * 
+	 */
 	@Test
 	public void tesresultLength() {
 		try {
@@ -65,7 +77,14 @@ public class testByRange {
 		}
 	}
 	
-	
+	/**
+	 * Tester hits and DB Retrieves the data from db. Verifies the Invalid Dates 
+	 *
+	 * Sample - http://ec2-**-**-98-69.compute-1.amazonaws.com:8080/converter/date?text=2017-01-01 
+	 *
+	 * Returns Invalid Date format if date does not follow yyyy-MM-DD
+	 * 
+	 */
 	@Test
 	public void testInvaliddates() {
 		try {
@@ -82,7 +101,14 @@ public class testByRange {
 		}
 		
 	}
-	
+	/**
+	 * Tester hits and DB Retrieves the data from db. Retrieves the length of result set
+	 * 
+	 * Sample - http://ec2-**-**-98-69.compute-1.amazonaws.com:8080/converter/range?text=2017-01-01 
+	 *
+	 * Returns a Int Value counting the number of Lines in resultSet
+	 *  
+	 */
 	private int resultLength(String ratesByDate) {
 		 String[] lines = ratesByDate.split("\r\n|\r|\n");
 		   return  lines.length;

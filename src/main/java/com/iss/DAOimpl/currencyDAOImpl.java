@@ -25,6 +25,19 @@ public class currencyDAOImpl implements currencyDAO {
 		this.dataSource = dataSource;
 	}
 
+	/**
+	 * DAO Impl Hits the DB and Retrieves the data from db.
+	 *
+	 * Sample -
+	 * http://ec2-**-**-98-69.compute-1.amazonaws.com:8080/converter/date?text=2017-01-01
+	 * Returns all the Exchange rates on the specified Date
+	 * 
+	 * Try invalid Dates
+	 * 
+	 * @throws ParseException
+	 *             If an Invalid Date is entered .
+	 * 
+	 */
 	@Cacheable(value = "currencyCache", key = "#name")
 	@Override
 	public List<currencyModel> findByDate(String paramDate) {

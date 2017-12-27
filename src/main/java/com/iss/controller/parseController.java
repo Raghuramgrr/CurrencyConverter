@@ -1,4 +1,5 @@
 package com.iss.controller;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.io.BufferedReader;
@@ -22,75 +23,83 @@ import com.iss.model.currencyModel;
 import com.iss.DAO.currencyDAO;
 import com.iss.DAO.parseDAO;
 import com.iss.DAOimpl.currencyDAOImpl;
+
 @RestController
 public class parseController {
- public static List < currencyModel > listConverter = new ArrayList < currencyModel > ();
 
- ApplicationContext context =
-  new ClassPathXmlApplicationContext("database//DBModule.xml");
- parseDAO cDAO = (parseDAO) context.getBean("parseDAO");
- SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
+	ApplicationContext context = new ClassPathXmlApplicationContext("database//DBModule.xml");
+	parseDAO cDAO = (parseDAO) context.getBean("parseDAO");
+	SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
 
- @RequestMapping(value = "/parse")
- public String parseFiles(@RequestParam("user_name")String user) {
-	
-	 cDAO.truncateTable();
-  //File folder = new File("//resources//temp");
-  ClassLoader loader = parseController.class.getClassLoader();
-  File filePath = new File(loader.getResource("temp").getPath());
-  System.out.println(filePath);
-  File folder = new File(filePath.toString());
-  File[] listofFiles = folder.listFiles();
-  for (File file: listofFiles) {
-   Date date = null;
+	/**
+	 * REST controller is open only for admin to load data from txt dump to
+	 * Database.
+	 *
+	 * Sample - http://ec2-**-**-98-69.compute-1.amazonaws.com:8080/converter/parse/
+	 * Supports only 8 currencies Insert into Mysql DB
+	 * 
+	 * @throws ParseException
+	 *             If Data is not reachable - to add more dump - add the txt files
+	 *             in //temp folder in resources .
+	 * 
+	 */
+	@RequestMapping(value = "/parse")
+	public String parseFiles(@RequestParam("user_name") String user) {
 
-   String FILENAME = file.getName();
-   System.out.println("FileName" + FILENAME);
-   BufferedReader br = null;
-   FileReader fr = null;
-   Matcher dateMatcher = Pattern.compile("(\\d{4})-(\\d{1,2})-(\\d{1,2})").matcher(FILENAME);
+		cDAO.truncateTable();
+		// File folder = new File("//resources//temp");
+		ClassLoader loader = parseController.class.getClassLoader();
+		File filePath = new File(loader.getResource("temp").getPath());
+		System.out.println(filePath);
+		File folder = new File(filePath.toString());
+		File[] listofFiles = folder.listFiles();
+		for (File file : listofFiles) {
+			Date date = null;
 
+			String FILENAME = file.getName();
+			System.out.println("FileName" + FILENAME);
+			BufferedReader br = null;
+			FileReader fr = null;
+			Matcher dateMatcher = Pattern.compile("(\\d{4})-(\\d{1,2})-(\\d{1,2})").matcher(FILENAME);
 
-   while (dateMatcher.find()) {
-    String str_date = dateMatcher.group();
-    System.out.println(str_date);
-    try {
-     date = formatDate.parse(str_date);
-    } catch (ParseException e) {
-     // TODO Auto-generated catch block
-     e.printStackTrace();
-    }
-   }
+			while (dateMatcher.find()) {
+				String str_date = dateMatcher.group();
+				System.out.println(str_date);
+				try {
+					date = formatDate.parse(str_date);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 
-   try {
+			try {
 
-    fr = new FileReader(filePath.toString() + "//" + FILENAME);
-    br = new BufferedReader(fr);
+				fr = new FileReader(filePath.toString() + "//" + FILENAME);
+				br = new BufferedReader(fr);
 
-    String sCurrentLine;
-   
-    while ((sCurrentLine = br.readLine()) != null) {
-     String result = Pattern.compile("[(traded)|(at)|(times)+]").matcher(sCurrentLine).replaceAll("");
-     String[] splited = result.replaceFirst("1", "").split("\\s+");
+				String sCurrentLine;
 
-     for (int i = 0; i < splited.length - 1; i++) {
-      currencyModel insertObj = new currencyModel(date, splited[i=++i].toLowerCase(), splited[i = ++i].toLowerCase(), splited[i=++i].toLowerCase());
-      //listConverter.add(new currencyModel(date, splited[i = ++i], splited[i = ++i], "USD"));
-      listConverter.add(insertObj);
-      cDAO.insert(insertObj);
-     }
+				while ((sCurrentLine = br.readLine()) != null) {
+					String result = Pattern.compile("[(traded)|(at)|(times)+]").matcher(sCurrentLine).replaceAll("");
+					String[] splited = result.replaceFirst("1", "").split("\\s+");
 
-    }
-   } catch (Exception e) {
-    e.printStackTrace();
-    return "Issue in parse Controller, some issue in parsing \t"+user;
-   }
+					for (int i = 0; i < splited.length - 1; i++) {
+						currencyModel insertObj = new currencyModel(date, splited[i = ++i].toLowerCase(),
+								splited[i = ++i].toLowerCase(), splited[i = ++i].toLowerCase());
+						cDAO.insert(insertObj);
+					}
 
-  }
-  System.out.println(listConverter);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "Issue in parse Controller, some issue in parsing \t" + user;
+			}
 
-  return "Parsing Done \t"+user;
+		}
 
- }
+		return "Parsing Done \t" + user;
+
+	}
 
 }

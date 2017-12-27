@@ -31,6 +31,16 @@ public class rangeController {
 
 	dateController dateObj = new dateController();
 
+	/**
+	 * REST controller can take Range of Dates  as input and gives exchange rate  and currencies as output in the specified rage .
+	 *
+	 * Sample - http://ec2-**-**-98-69.compute-1.amazonaws.com:8080/converter/range?text=2017-01-01 2017-01-02
+	 * Returns all the Exchange rates on the specified Date Range 
+	 * 
+	 * Try invalid Dates  
+	 * @throws ParseException If an Invalid Date is entered .
+	 * 
+	 */
 	@RequestMapping("/range")
 	public String getRatesByDateRange(@RequestParam("text") String dates) throws ParseException {
 		totalString = new String();

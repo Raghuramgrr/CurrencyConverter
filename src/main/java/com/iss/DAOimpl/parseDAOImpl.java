@@ -3,6 +3,7 @@ package com.iss.DAOimpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,16 @@ public class parseDAOImpl implements parseDAO {
 		this.dataSource = dataSource;
 	}
 
+	/**
+	 * DAO  Impl Hits the DB and Inserts data into  db.
+	 *
+	 * Sample - http://ec2-**-**-98-69.compute-1.amazonaws.com:8080/converter/parse
+	 * Inserts all data into schema 
+	 * Supports only 8 currencies 
+	 *  Converts all data into Lowercase and Inserts - Easy for retrieval 
+	 * @throws ParseException If Dump is in invalid Format.
+	 * 
+	 */
 	@Override
 	public void insert(currencyModel currency) {
 		String sql = "INSERT INTO CURRENCY " + "(CDATE, SCURR, TCURR,RATE) VALUES (?, ?, ?,?)";

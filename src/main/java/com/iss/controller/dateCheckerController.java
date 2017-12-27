@@ -5,6 +5,18 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+
+/**
+ * Non-REST controller can take Date  as input and gives whether the date is valid or not 
+ *
+ * 
+ * Returns boolean value - usable by all the controllers 
+ *  
+ * Try invalid Dates  
+ * returns false If an Invalid Date is entered .
+ * 
+ * Try : 2015-02-30 // Feb 30 is not in 2015 
+ */
 public class dateCheckerController {
 	
 	SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");

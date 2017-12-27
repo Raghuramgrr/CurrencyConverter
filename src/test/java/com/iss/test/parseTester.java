@@ -30,7 +30,7 @@ public class parseTester {
 		rangeTest = new rangeController();
 		exchangeTest = new exchangerateController();
 	}
-
+  
 	@Test
 	public void testInput() throws InterruptedException {
 		try {

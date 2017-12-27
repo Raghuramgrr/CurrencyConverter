@@ -21,7 +21,16 @@ public class exchangeDAOImpl implements exchangeDAO {
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
-
+	/**
+	 * DAO  Impl Hits the DB and Retrieves the data from db.
+	 *
+	 * Sample - http://ec2-**-**-98-69.compute-1.amazonaws.com:8080/converter/exchange?text=2017-01-01 CHF EUR
+	 * Returns all the Exchange rates on the specified Date
+	 * Supports only 8 currencies 
+	 * Try invalid Dates  
+	 * @throws ParseException If an Invalid Date is entered .
+	 * 
+	 */
 	@Override
 	public currencyModel findExchangeRates(String paramDate, String sCurr) {
 		String sql = "SELECT * FROM CURRENCY WHERE CDATE = ? and SCURR= ?";

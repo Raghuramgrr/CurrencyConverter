@@ -14,34 +14,67 @@ public class currencyModel {
 	private String targetCurrency;
 	private String conversionRate;
 
+	/**
+	 * Model Function getDate() retrieves Date
+	 *
+	 */
 	public Date getDate() {
 		return date;
 	}
+
+	/**
+	 * Model Function setDate() sets Date
+	 *
+	 */
 
 	public void setDate(Date date) {
 		this.date = date;
 	}
 
+	/**
+	 * Model Function getSourceCurrency() retrieves SCurr
+	 *
+	 */
 	public String getSourceCurrency() {
 		return sourceCurrency;
 	}
 
+	/**
+	 * Model Function setSourceCurrency() sets sCurr
+	 *
+	 */
 	public void setSourceCurrency(String sourceCurrency) {
 		this.sourceCurrency = sourceCurrency;
 	}
 
+	/**
+	 * Model Function getTargetCurrency() retrieves tCurr
+	 *
+	 */
 	public String getTargetCurrency() {
 		return targetCurrency;
 	}
 
+	/**
+	 * Model Function setTargetCurrency() sets tCurr
+	 *
+	 */
 	public void setTargetCurrency(String targetCurrency) {
 		this.targetCurrency = targetCurrency;
 	}
 
+	/**
+	 * Model Function getConversionRate() retrieves conversionrate
+	 *
+	 */
 	public String getConversionRate() {
 		return conversionRate;
 	}
 
+	/**
+	 * Model Function setConversionRatecy() sets conversionRate
+	 *
+	 */
 	public void setConversionRate(String conversionRate) {
 		this.conversionRate = conversionRate;
 	}
