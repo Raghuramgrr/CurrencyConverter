@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="currencyDAO" class="com.iss.DAOimpl.currencyDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+ <bean id="parseDAO" class="com.iss.DAOimpl.parseDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	 <bean id="exchangeDAO" class="com.iss.DAOimpl.exchangeDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+</beans>

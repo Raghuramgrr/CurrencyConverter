@@ -1,1 +1,4 @@
-iss\fileTester.class
+com\iss\test\testByRange.class
+com\iss\test\parseTester.class
+com\iss\test\testByDate.class
+com\iss\test\testExchangeRates.class
