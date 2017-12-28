@@ -11,11 +11,11 @@ PostMan
 ## JAVA-DOC : 
 Java - Doc Is created  and it is hosted as static site - Navigate to below link to get the Detailed Info on APIs 
 
-Click to view JavaDoc [s3-SiteLink](https://s3.amazonaws.com/currencyconverterjavadoc/JavaDoc/index.html)
+[Click to view JavaDoc](https://github.com/Raghuramgrr/CurrencyConverter/blob/master/Currencyconverter%20Documentation.rar) - Unzip the Java doc and Navigate to Index.html 
+ 
+https://github.com/Raghuramgrr/CurrencyConverter/blob/master/Currencyconverter%20Documentation.rar
 
-
-
-## Join jbotworkspace in slack  - Invitations sent already 
+## Join jbotworkspace in slack  - Invitations sent already  
 
 ```
   1) /currencyparse   - This parses all the dump files and stores in mysql database
