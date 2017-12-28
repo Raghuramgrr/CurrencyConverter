@@ -11,9 +11,8 @@ PostMan
 ## JAVA-DOC : 
 Java - Doc Is created  and it is hosted as static site - Navigate to below link to get the Detailed Info on APIs 
 
-[Click to view JavaDoc](https://github.com/Raghuramgrr/CurrencyConverter/blob/master/Currencyconverter%20Documentation.rar) - Unzip the Java doc and Navigate to Index.html 
- 
-https://github.com/Raghuramgrr/CurrencyConverter/blob/master/Currencyconverter%20Documentation.rar
+[Click to view JavaDoc - STATIC SITE](https://s3.amazonaws.com/currencyconverterjavadoc/CurrconvDoc/index.html)
+
 
 ## Join jbotworkspace in slack  - Invitations sent already  
 
@@ -68,6 +67,8 @@ Create EC2 instance to your deployment setup in 2 mins
   	10) sudo service mysqld start
     11)  sudo service tomcat7 start
     12)  sudo service mysqld stop
+    13)  Deploy war in /var/lib/tomcat8/webapps
+    14) Logging in /var/log/tomcat8/catalina.out 
     
    ## Author
    [RaghuramGnanasekaran](http://www.raghuramg.com)
